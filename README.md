@@ -28,6 +28,24 @@ python main.py
 - Optionally, use the included .bat or .sh files
 - Files should now be updated.
 
+### Troubleshooting
+
+##### "The application cannot be opened" 
+Make sure an encrypted app from the App Store is installed. Try to find an iPhone OS 2 app on the App Store. Alternitavely, downgrade an app
+in your purchased tab to an older version. Sync that encrypted .ipa the same way you install .ipa files on your device. Then, reinstall all cracked apps.
+
+If you are still having issues, contact me with the .ipa in question and I will investigate.
+
+##### App crashing on launch
+This might be an issue relating to permissions of the app binary itself. This tool does not fix this issue. 
+Install MobileTerminal and `chmod -x` on the app binary.
+A crude but effective method would to run `chmod -R 777 ~/Applications/*` which will work for all Applications.
+
+Some applications will not be solved by this method. It will most likely not run on iPhone OS 2.0.
+
+##### Unable to install
+Make sure `MobileInstallation` is patched.
+
 ### License
 This software is licenced under the [public domain](https://github.com/minif/iphoneos2-app-fixer/blob/main/LICENSE). 
 You may use it in any way without restriction. 
