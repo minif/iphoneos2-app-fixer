@@ -47,5 +47,5 @@ Some applications will not be solved by this method. It will most likely not run
 Make sure `MobileInstallation` is patched.
 
 ### License
-This software is licenced under the [public domain](https://github.com/minif/iphoneos2-app-fixer/blob/main/LICENSE). 
+This software is licenced under the [public domain](https://github.com/minif/iphoneos2-app-fixer/blob/master/LICENSE). 
 You may use it in any way without restriction. 
