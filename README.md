@@ -44,8 +44,13 @@ A crude but effective method would to run `chmod -R 777 ~/Applications/*` which 
 Some applications will not be solved by this method. It will most likely not run on iPhone OS 2.0.
 
 ##### Unable to install
-Make sure `MobileInstallation` is patched.
+Make sure `MobileInstallation` is patched. If it is, the app may not be properly cracked. You may need to obtain a device on iOS 6 to dump the app (using the lock bug)
+and then run that dump through this tool.
 
+##### "(!!!) Error converting (app)!"
+The tool has somehow run into an error. Contact me or leave an issue with a link to the app in question. It could either be an invalid .ipa file or an issue with the tool.
+
+(This tool is extremely basic and does not test .ipa files. This functionality may be incorporated in the future)
 ### License
 This software is licenced under the [public domain](https://github.com/minif/iphoneos2-app-fixer/blob/master/LICENSE). 
 You may use it in any way without restriction. 
