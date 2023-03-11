@@ -2,4 +2,4 @@
 here="`dirname \"$0\"`"
 echo "cd-ing to $here"
 cd "$here" || exit 1
-python3 main.py
+python3 main.py --batch

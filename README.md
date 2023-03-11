@@ -17,16 +17,20 @@ As a result, iPhone OS 2.0 will display the "The application cannot be opened" e
 - Python 3.9 (Probably, untested for older versions)
 
 ### Usage
-- Download repository to computer
+- Download repository (git clone or download zip)
 - Place .ipa files into the /input folder
-- In terminal, run the following command: 
-  - On mac, use python3 rather than python
+- Use the included .bat or .sh files to perform the conversion
+
+##### CLI Usage
 ```
-cd /path/to/gpx-to-csv
-python main.py
+cd /path/to/iphoneos2-app-fixer
+python main.py appname
 ```
-- Optionally, use the included .bat or .sh files
-- Files should now be updated.
+OR
+```
+cd /path/to/iphoneos2-app-fixer
+python main.py --batch inputfolder
+```
 
 ### Troubleshooting
 
@@ -48,9 +52,12 @@ Make sure `MobileInstallation` is patched. If it is, the app may not be properly
 and then run that dump through this tool.
 
 ##### "(!!!) Error converting (app)!"
-The tool has somehow run into an error. Contact me or leave an issue with a link to the app in question. It could either be an invalid .ipa file or an issue with the tool.
+Contact me or leave an issue with a link to the app in question. It could either be an invalid .ipa file or an issue with the tool.
+
+##### "ValueError: seek of closed file"
+Remember to `cd` to the iphoneos2-app-fixer directory. 
 
 (This tool is extremely basic and does not test .ipa files. This functionality may be incorporated in the future)
+
 ### License
 This software is licenced under the [public domain](https://github.com/minif/iphoneos2-app-fixer/blob/master/LICENSE). 
-You may use it in any way without restriction. 

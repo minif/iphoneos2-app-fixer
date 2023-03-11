@@ -3,9 +3,10 @@ import os
 import zipfile
 import plistlib
 import warnings
+import sys
 
 # Tool related constants (No need to change)
-INPUT_DIR = "input/"
+INPUT_DIR = "input/" #Input directory for batch file conversion
 NEW_KEY = "SignerIdentity"
 NEW_VALUE = "Apple iPhone OS Application Signing"
 
@@ -46,12 +47,32 @@ def main():
     """
     warnings.filterwarnings("ignore") # Do this so the zip library doesn't complain
 
-    # Loop through all .ipa files in the input folder.
-    for ipa in os.listdir(INPUT_DIR):
+    # Check arguements to get .ipa (or look for --batch)
+    # If there is no arguements, display command information
+    if len(sys.argv)<=1:
+        print("Usage: main.py appname.ipa")
+        print("Usage: main.py --batch inputfolder")
+        sys.exit(1)
+
+    if sys.argv[1]=="--batch":
+        input = INPUT_DIR
+        if len(sys.argv)>2:
+            input = sys.argv[2]
+        for ipa in os.listdir(input):
+            try:
+                convert_ipa(input+ipa)
+            except:
+                # Basic error handling so that loop is not inturruped
+                print("(!!!) Error converting %s!"%input+ipa)
+    else:
         try:
-            convert_ipa(INPUT_DIR+ipa)
+            convert_ipa(sys.argv[1])
         except:
             # Basic error handling so that loop is not inturruped
-            print("(!!!) Error converting %s!"%INPUT_DIR+ipa)
+            print("(!!!) Error converting %s!"%sys.argv[1]+ipa)
+
+
+    # Loop through all .ipa files in the input folder.
+
 
 main()
