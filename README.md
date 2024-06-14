@@ -7,11 +7,12 @@ However, iPhone OS 2.0 works slightly differently. The current solution is to ov
 of any decrypted .ipa file, but nothing is done to modify if apps can be run.
 
 Fortunately, there is a quirk with how iPhone OS 2.0 works; So long as `info.plist` contains the key 
-`SignerIdentity` with a value `Apple iPhone OS Application Signing`, and an encrypted app (either from the App Store or iTunes) 
-is downloaded, decrypted apps will work without problem.
+`SignerIdentity` with a value `Apple iPhone OS Application Signing`, and `/var/mobile/Library/Caches/com.apple.mobile.installation.composite_trust.plist` contains the  `Apple iPhone OS Application Signing` key set to true, decrypted apps will work without problem.
 
 Old app cracking tools of the era would add this entry to `info.plist`, such as Crackulous. However, newer tools do not add this entry.
 As a result, iPhone OS 2.0 will display the "The application cannot be opened" error. This tool adds back these entries to avoid the error.
+
+Make sure [the modified com.apple.mobile.installation.composite_trust.plist](https://github.com/minif/iphoneos2-app-fixer/raw/master/com.apple.mobile.installation.composite_trust.plist) file is placed in `/var/mobile/Library/Caches/`.
 
 ### Requires
 - Python 3.9 (Probably, untested for older versions)
@@ -35,20 +36,20 @@ python main.py --batch inputfolder
 ### Troubleshooting
 
 ##### "The application cannot be opened" 
-Make sure an encrypted app from the App Store is installed. Try to find an iPhone OS 2 app on the App Store. Alternitavely, downgrade an app
-in your purchased tab to an older version. Sync that encrypted .ipa the same way you install .ipa files on your device. Then, reinstall all cracked apps.
+Make sure [the modified com.apple.mobile.installation.composite_trust.plist](https://github.com/minif/iphoneos2-app-fixer/raw/master/com.apple.mobile.installation.composite_trust.plist) file is placed in `/var/mobile/Library/Caches/`. Reboot may be required.
+You may need to reinstall all cracked apps.
 
 If you are still having issues, contact me with the .ipa in question and I will investigate.
 
 ##### App crashing on launch
 This might be an issue relating to permissions of the app binary itself. This tool does not fix this issue. 
-Install MobileTerminal and `chmod -x` on the app binary.
-A crude but effective method would to run `chmod -R 777 ~/Applications/*` which will work for all Applications.
+Install MobileTerminal and `chmod -x` on the app binary. To find the app binary, use Filza, look in `/var/mobile/Applications` with Application Names enabled in preferences (the gear icon).
+A crude but effective method would to run `chmod -R -x ~/Applications/*` which will work for all Applications.
 
 Some applications will not be solved by this method. It will most likely not run on iPhone OS 2.0.
 
 ##### Unable to install
-Make sure `MobileInstallation` is patched. If it is, the app may not be properly cracked. You may need to obtain a device on iOS 6 to dump the app (using the lock bug)
+Make sure `MobileInstallation` is patched. If it is, the app may not be properly cracked. ~You may need to obtain a device on iOS 6 to dump the app (using the lock bug)
 and then run that dump through this tool.
 
 ##### "(!!!) Error converting (app)!"
